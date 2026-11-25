@@ -20,4 +20,4 @@
 - `methodology-set` is for values a program dictates (root:shoot may become one). It is a fixed value that names the standard that sets it, so it is never reported as an estimate and can become a normal prior if a program allows a range.
 - The 3/4 metabolic scaling exponent stays in code. Moving away from it is a reevaluation of the underlying science, not a config change.
 - The memo's prior summary table is standard in model memos so a reader can see which priors rest on evidence and which are close to placeholders. The generator comes in a later piece.
-- Moving the priors into `priorsets/peru_arr.yaml` changed no number: `draw_worlds(50, 11)` is hash-identical before and after (pinned in `tests/test_priorset.py`). root:shoot keeps its placeholder width for now.
+- Moving the priors into `priorsets/peru_arr.yaml` changed no number: `draw_worlds(4, 11)` matches the pre-move draws to 1e-9 (reference values pinned in `tests/test_priorset.py`). root:shoot keeps its placeholder width for now.
