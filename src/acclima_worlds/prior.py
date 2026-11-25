@@ -1,4 +1,5 @@
-"""Draw worlds from the prior. A world is one internally consistent set of parameters."""
+"""This function takes draws of world parameters from the prior predictive model. 
+   A world is one set of parameters that produces an initial carbon trajectory for a single simulation."""
 import numpy as np
 from . import priors as P
 
