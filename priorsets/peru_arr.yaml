@@ -1,0 +1,185 @@
+# Prior set: Peru ARR default (Madre de Dios). Every entry is a PLACEHOLDER unless status says otherwise.
+#
+# tier   structural | regional | trait | project   (what a new project must revisit; see DECISIONS.md)
+# status placeholder | reviewed | evidence-based | methodology-set
+#   reviewed and evidence-based entries need reviewed_by, reviewed_on (YYYY-MM-DD) and evidence.
+#   methodology-set entries are fixed values (dist: fixed) and need `standard` naming the rule that sets them.
+# Priors start wide on purpose. Do not narrow one without recording the evidence in DECISIONS.md.
+name: peru_arr_default
+version: 1
+
+groups: [pioneer, mid, slow]   # placeholder functional groups; species mapping comes later
+
+constants:                      # model constants that are not drawn
+  cap_sharpness:
+    value: 4.0
+    tier: structural
+    status: placeholder
+    basis: "Smooth-min exponent for the NPP supply cap; higher = harder cap."
+  k_tolerance_factor:
+    value: 1.5
+    tier: structural
+    status: placeholder
+    basis: "Soft tolerance on log(B_WBE / K): about a factor of 1.5 each side (wide on purpose)."
+
+priors:                         # world-level: shared by every cohort in a world
+  npp_wood:
+    dist: lognormal
+    median: 3000.0
+    sdlog: 0.40
+    units: kg C / ha / yr
+    tier: regional
+    status: placeholder
+    basis: "Wood NPP of mature western Amazon forest, order of magnitude only. Replace from literature search and site productivity layers."
+  mu_bar:
+    dist: lognormal
+    median: 0.020
+    sdlog: 0.35
+    units: 1 / yr
+    tier: regional
+    status: placeholder
+    basis: "Turnover rate of mature live biomass; tau = 1 / mu_bar (median 50 yr). Defines K = NPP * tau."
+  mu_comp:
+    dist: lognormal
+    median: 0.030
+    sdlog: 0.50
+    units: 1 / yr
+    tier: regional
+    status: placeholder
+    basis: "Extra stem mortality at full competition (scaled by 1 - phi)."
+  root_shoot:
+    dist: lognormal
+    median: 0.17
+    sdlog: 0.30
+    units: "-"
+    tier: structural
+    status: placeholder
+    basis: "Median is the IPCC planted-rainforest ratio used in the project memo (0.17); width is a placeholder. May become methodology-set if a program fixes it."
+  kappa_excess:
+    dist: lognormal
+    median: 0.5
+    sdlog: 0.80
+    units: "-"
+    tier: regional
+    status: placeholder
+    basis: "kappa = 1 + excess. Young-stand NPP budget at B = 0 is kappa x mature wood NPP; it falls linearly to the mature value as live carbon B approaches K. Median kappa 1.5, 5-95% about 1.1-2.8. Set before looking at its effect on any comparison with project documents."
+  m0:
+    dist: lognormal
+    median: 0.03
+    sdlog: 0.50
+    units: kg C / tree
+    tier: project
+    status: placeholder
+    basis: "Planting-stock carbon per seedling."
+  survival:
+    dist: beta
+    alpha: 8.0
+    beta: 2.0
+    units: "-"
+    tier: project
+    status: placeholder
+    basis: "Establishment survival (mean 0.8)."
+  p_regen:
+    dist: beta
+    alpha: 1.0
+    beta: 4.0
+    units: "-"
+    tier: project
+    status: placeholder
+    basis: "World-level probability that a baseline hectare regenerates (mean 0.2)."
+  n_regen:
+    dist: lognormal
+    median: 150.0
+    sdlog: 0.70
+    units: stems / ha
+    tier: project
+    status: placeholder
+    basis: "Pioneer stems per ha if the baseline hectare regenerates."
+
+# Group-level. M: asymptotic tree carbon (WBE maximum size). r: approach rate of u = (m/M)^(1/4),
+# r = a / (4 M^(1/4)). mu_mult: group mortality relative to mu_bar (mid is the reference, so it has no entry).
+# n_ref: stems per ha of the group in a mature reference stand (after self-thinning); pioneers have none.
+group_priors:
+  pioneer:
+    M:
+      dist: lognormal
+      median: 280.0
+      sdlog: 0.50
+      units: kg C / tree
+      tier: trait
+      status: placeholder
+      basis: "Order of the Inga edulis asymptote in the project memo."
+    r:
+      dist: lognormal
+      median: 0.15
+      sdlog: 0.30
+      units: 1 / yr
+      tier: trait
+      status: placeholder
+      basis: "Gives ~25 kg C per tree at year 5."
+    mu_mult:
+      dist: lognormal
+      median: 2.5
+      sdlog: 0.40
+      units: "-"
+      tier: trait
+      status: placeholder
+      basis: "Pioneers turn over faster (project memo uses ~20-25 yr lifespans)."
+  mid:
+    M:
+      dist: lognormal
+      median: 1500.0
+      sdlog: 0.60
+      units: kg C / tree
+      tier: trait
+      status: placeholder
+      basis: "Order of the Cedrela/Handroanthus/Cedrelinga asymptotes."
+    r:
+      dist: lognormal
+      median: 0.050
+      sdlog: 0.35
+      units: 1 / yr
+      tier: trait
+      status: placeholder
+      basis: "No source yet."
+    n_ref:
+      dist: lognormal
+      median: 100.0
+      sdlog: 0.50
+      units: stems / ha
+      tier: regional
+      status: placeholder
+      basis: "Mature reference stocking. Needs plot data (e.g. RAINFOR, ter Steege)."
+  slow:
+    M:
+      dist: lognormal
+      median: 20000.0
+      sdlog: 0.70
+      units: kg C / tree
+      tier: trait
+      status: placeholder
+      basis: "Order of the Dipteryx asymptote (project prior centred on 74 Mg AGB)."
+    r:
+      dist: lognormal
+      median: 0.0175
+      sdlog: 0.35
+      units: 1 / yr
+      tier: trait
+      status: placeholder
+      basis: "Gives ~1.5 Mg C per tree at year 40."
+    mu_mult:
+      dist: lognormal
+      median: 0.7
+      sdlog: 0.30
+      units: "-"
+      tier: trait
+      status: placeholder
+      basis: "No source yet."
+    n_ref:
+      dist: lognormal
+      median: 15.0
+      sdlog: 0.50
+      units: stems / ha
+      tier: regional
+      status: placeholder
+      basis: "Emergent stocking in mature forest."

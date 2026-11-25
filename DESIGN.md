@@ -14,13 +14,17 @@ Each has a fixed interface and a deliberately basic first version, so a later ve
 
 | Module | Basic version | Later |
 |---|---|---|
-| `priors`, `prior` | placeholder priors, one parameter draw per world | elicited priors, hierarchy over sites |
+| `priorset`, `prior` | prior set file with tier and status per entry, placeholder gate, one parameter draw per world | elicited priors, hierarchy over sites |
+| `priors` | defaults for the Peru ARR project and planting plans | project config file |
 | `cohort` | West-Brown-Enquist cohorts sharing an NPP budget | size-asymmetric sharing, recruitment |
 | `envelope` | K = NPP x tau consistency weights | other evidence on K |
 | `pools` | live biomass (AGB, BGB) | dead wood, litter, soil |
 | `scenarios` | project and baseline on the same engine | disturbance, replanting |
 | `accounting` | project minus baseline | methodology rules, buffer, Chloris check |
 | observation models, inference, simulation, export | not yet | |
+
+## Prior sets
+Priors are data (`priorsets/*.yaml`), not code. Each entry has a tier (structural, regional, trait, project) saying what a new project must revisit, and a status (placeholder, reviewed, evidence-based, methodology-set). `PriorSet.check_gate` blocks headline outputs while placeholders remain, unless explicitly allowed, and then returns a stamp for the output. `PriorSet.label()` names the set and a content fingerprint, so every output says which assumptions produced it. See DECISIONS.md (2026-11-25).
 
 ## The biophysical envelope
 - **Stock:** K = NPP_wood x tau is the equilibrium live carbon (kg C/ha). tau = 1/mu_bar, tied to the mortality prior.
