@@ -1,0 +1,24 @@
+worlds 4000, seed 20261124, effective sample size after K weighting 2452 (61%)
+K = NPP x tau (tC/ha), p5/p50/p95 prior: 63 / 150 / 364
+B_WBE trait-implied mature stock (tC/ha), prior: 51 / 169 / 570
+kappa (young-stand budget multiplier), prior p5/p50/p95: 1.14 / 1.50 / 2.90
+ratio B_WBE / K, prior: 0.32 / 1.11 / 4.17
+share of prior worlds within a factor 1.5 of K: 0.39
+
+Creditable carbon, project minus baseline, live AGB + BGB (tCO2e/ha), p5 / p50 / p95
+activity       year  prior (unweighted)      K-weighted
+reforestation    5       14     43     95          15     43     96
+reforestation   10       30    101    217          34    102    217
+reforestation   20       63    181    396          70    187    399
+reforestation   40      118    292    649         132    306    660
+silvopasture     5      -26      1     10         -26      1      8
+silvopasture    10      -52      8     63         -57      8     53
+silvopasture    20      -21     63    227         -28     62    222
+silvopasture    40       45    226    548          50    241    567
+
+reforestation year 5: share of worlds where the NPP cap binds (phi < 0.9): 0.74; median phi 0.69
+reforestation year 10: share of worlds where the NPP cap binds (phi < 0.9): 0.89; median phi 0.54
+reforestation year 20: share of worlds where the NPP cap binds (phi < 0.9): 0.86; median phi 0.60
+reforestation year 40: share of worlds where the NPP cap binds (phi < 0.9): 0.76; median phi 0.73
+reforestation live AGB at year 40 / K: p5/p50/p95 = 0.27 / 0.46 / 0.73; share of worlds above K: 0.00
+reforestation mean creditable rate over 40 yr (tCO2e/ha/yr), p5/p50/p95 prior: 3.0 / 7.3 / 16.2
