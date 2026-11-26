@@ -1,0 +1,8 @@
+2000 worlds, seed 1, reforestation plan, live carbon in t C/ha (5th / 50th / 95th percentile)
+
+rule                                      year 10          year 20          year 40   cap binds y10   share of carbon y40 (pioneer/mid/slow)
+equal fraction (current)             13/  26/  53     20/  45/  99     30/  70/ 153          94%      0.18 / 0.40 / 0.31
+mass-weighted (beta=1)               12/  26/  53     17/  43/  94     21/  58/ 142          92%      0.26 / 0.33 / 0.01
+mass-weighted (beta=2)               12/  26/  53     17/  43/  93     20/  56/ 141          92%      0.29 / 0.32 / 0.01
+pioneers favoured (2, 1, 0.5)        12/  26/  53     18/  43/  95     25/  65/ 147          93%      0.32 / 0.50 / 0.07
+slow favoured (0.5, 1, 2)            13/  27/  54     22/  49/ 102     34/  75/ 161          95%      0.06 / 0.23 / 0.67
