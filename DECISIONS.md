@@ -21,3 +21,10 @@
 - The 3/4 metabolic scaling exponent stays in code. Moving away from it is a reevaluation of the underlying science, not a config change.
 - The memo's prior summary table is standard in model memos so a reader can see which priors rest on evidence and which are close to placeholders. The generator comes in a later piece.
 - Moving the priors into `priorsets/peru_arr.yaml` changed no number: `draw_worlds(4, 11)` matches the pre-move draws to 1e-9 (reference values pinned in `tests/test_priorset.py`). root:shoot keeps its placeholder width for now.
+
+## 2026-11-26 sharing of the NPP budget is a placeholder (project owner doubts every candidate rule)
+- Basic rule, as built in `cohort.py`: every cohort realizes the same fraction phi of its own potential growth. This is not equal absolute shares: a larger cohort has larger potential growth and takes more carbon. It is a neutral baseline, not a claim about how forest competition works.
+- The project owner does not think this is the ecologically correct rule, and does not think a size-dependent rule is correct either. The question is open. We keep the basic rule for now.
+- It matters: with placeholder priors the cap binds in about 94% of worlds at year 10, so the rule decides who gets the limited growth in most worlds. It can move the pioneer / mid / slow mix and through it the carbon trajectory.
+- Candidate rules, all swapped in through `share_budget`: equal fraction (current); mass-weighted (larger cohorts take disproportionately more, as in asymmetric competition for light); group-specific weights for shade tolerance (a separate axis from size); a light-capture model.
+- Next step: a sensitivity run on the same worlds under alternative rules (`scripts/sharing_sensitivity.py`) to measure how much carbon and group mix move. If they barely move, the question waits. If they move a lot, it goes on the list for the first lit-review pilot, with wood NPP and mu_bar.
